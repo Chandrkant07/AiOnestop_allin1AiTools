@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 109, 40, 217; /* Purple (6d28d9) */
+  --secondary: 13, 148, 136; /* Teal (0d9488) */
+  --accent: 249, 115, 22; /* Orange (f97316) */
+  --success: 22, 163, 74; /* Green (16a34a) */
+  --warning: 234, 179, 8; /* Yellow (eab308) */
+  --error: 220, 38, 38; /* Red (dc2626) */
+  --background: 255, 255, 255; /* White */
+  --foreground: 23, 23, 23; /* Black */
+  --card: 255, 255, 255;
+  --card-foreground: 23, 23, 23;
+  --muted: 245, 245, 245;
+  --muted-foreground: 115, 115, 115;
+  --border: 229, 231, 235;
+}
+
+.dark {
+  --primary: 139, 92, 246; /* Lighter Purple (8b5cf6) */
+  --secondary: 20, 184, 166; /* Lighter Teal (14b8a6) */
+  --accent: 251, 146, 60; /* Lighter Orange (fb923c) */
+  --success: 34, 197, 94; /* Lighter Green (22c55e) */
+  --warning: 250, 204, 21; /* Lighter Yellow (facc15) */
+  --error: 248, 113, 113; /* Lighter Red (f87171) */
+  --background: 17, 24, 39; /* Dark gray/blue */
+  --foreground: 255, 255, 255; /* White */
+  --card: 31, 41, 55;
+  --card-foreground: 255, 255, 255;
+  --muted: 55, 65, 81;
+  --muted-foreground: 209, 213, 219;
+  --border: 55, 65, 81;
+}
+
+* {
+  @apply transition-colors duration-200;
+}
+
+body {
+  @apply bg-background text-foreground font-inter antialiased;
+  font-family: 'Inter', sans-serif;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white hover:bg-secondary/90;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white hover:bg-accent/90;
+  }
+  
+  .btn-ghost {
+    @apply bg-transparent hover:bg-muted text-foreground;
+  }
+  
+  .card {
+    @apply bg-card text-card-foreground rounded-lg border border-border shadow-sm;
+  }
+
+  .input {
+    @apply flex h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .select {
+    @apply h-10 w-full rounded-md border border-border bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
+  }
+  
+  .textarea {
+    @apply flex min-h-[80px] w-full rounded-md border border-border bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  
+  .checkbox {
+    @apply h-4 w-4 rounded border border-border text-primary focus:ring-primary focus:ring-offset-2;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease forwards;
+}
